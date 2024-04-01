@@ -1,0 +1,40 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Home > matches snapshot 1`] = `
+<DocumentFragment>
+  <h1
+    class="_title_b140de"
+  >
+    Tic Tac Toe #️⃣
+  </h1>
+  <div
+    class="_grid_b140de"
+  >
+    <form
+      class="_form_b140de"
+    >
+      <input
+        class="_input_b140de"
+        placeholder="❌ Your Name"
+        value=""
+      />
+      <input
+        class="_input_b140de"
+        placeholder="⭕ Opponent Name"
+        value=""
+      />
+      <button
+        class="_startButton_b140de"
+        type="submit"
+      >
+        Start Game
+      </button>
+    </form>
+    <a
+      href="/game/list"
+    >
+      See all games
+    </a>
+  </div>
+</DocumentFragment>
+`;

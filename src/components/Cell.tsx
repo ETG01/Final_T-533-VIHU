@@ -7,11 +7,18 @@ type Props = {
   number: number;
   value: Sign | string;
   readOnly?: boolean;
+  "data-testid"?: string;
 };
 
-export default function Cell({ onClick, number, value, readOnly }: Props) {
+export default function Cell({
+  onClick,
+  number,
+  value,
+  readOnly,
+  "data-testid": testId,
+}: Props) {
   return (
-    <div className={readOnly ? styles.miniCell : styles.cell} onClick={onClick}>
+    <div data-testid={testId} className={readOnly ? styles.miniCell : styles.cell} onClick={onClick}>
       {value === Sign.X && EMOJI[Sign.X]}
       {value === Sign.O && EMOJI[Sign.O]}
     </div>

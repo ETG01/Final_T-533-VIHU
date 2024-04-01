@@ -21,12 +21,12 @@ The Project is a NextJS application with a Postgres database to keep track of th
 #### **Fix it!**
 
 - Currently the game can only tell when someone wins, but not when there is a draw. Write a test for such function and then implement it and add that to the game.
-- Should the game be playable without the players names ?
+- Should the game be playable without the players names ? Yes Beaus some users might not want to enter their names. Make the game playable without the names beaus they can always see if they ar X or O and the game can still be played.
 - Create a new GitHub repository with one eslint rule that forbids moment. Release that package, using GitHub Actions, and use that in this project.
 - There should be lint errors/warnings after applying that rule, fix it.
 - Make the code and relevant files pretty.
-- There are no unit tests. Add them.
-- There are no ui integration tests. Add them.
+- There are no unit tests. Add them. FINSIHED
+- There are no ui integration tests. Add them. FINISHED
 - There are no e2e tests. Add them.
 
 #### **Deploy it!**
@@ -66,6 +66,8 @@ Run the following commands to get started:
 `npm install`
 
 `npm run prisma:init`
+npx prisma generate
+
 
 `npm run dev`
 

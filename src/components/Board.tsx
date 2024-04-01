@@ -42,18 +42,21 @@ export default function Board({ onMove, moves, readOnly }: Props): JSX.Element {
             value={moves[0]}
             number={0}
             onClick={() => handleClick(0)}
+            data-testid={`cell-${0}`}
           />
           <Cell
             readOnly={readOnly}
             value={moves[1]}
             number={1}
             onClick={() => handleClick(1)}
+            data-testid={`cell-${1}`}
           />
           <Cell
             readOnly={readOnly}
             value={moves[2]}
             number={2}
             onClick={() => handleClick(2)}
+            data-testid={`cell-${2}`}
           />
         </div>
         <div>
@@ -62,18 +65,21 @@ export default function Board({ onMove, moves, readOnly }: Props): JSX.Element {
             value={moves[3]}
             number={3}
             onClick={() => handleClick(3)}
+            data-testid={`cell-${3}`} 
           />
           <Cell
             readOnly={readOnly}
             value={moves[4]}
             number={4}
             onClick={() => handleClick(4)}
+            data-testid={`cell-${4}`} 
           />
           <Cell
             readOnly={readOnly}
             value={moves[5]}
             number={5}
             onClick={() => handleClick(5)}
+            data-testid={`cell-${5}`} 
           />
         </div>
         <div>
@@ -82,18 +88,21 @@ export default function Board({ onMove, moves, readOnly }: Props): JSX.Element {
             value={moves[6]}
             number={6}
             onClick={() => handleClick(6)}
+            data-testid={`cell-${6}`} 
           />
           <Cell
             readOnly={readOnly}
             value={moves[7]}
             number={7}
             onClick={() => handleClick(7)}
+            data-testid={`cell-${7}`} 
           />
           <Cell
             readOnly={readOnly}
             value={moves[8]}
             number={8}
             onClick={() => handleClick(8)}
+            data-testid={`cell-${8}`} 
           />
         </div>
       </div>

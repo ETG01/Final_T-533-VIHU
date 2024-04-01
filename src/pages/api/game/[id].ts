@@ -18,6 +18,11 @@ export default async function game(req: NextApiRequest, res: NextApiResponse) {
 
     case "PUT":
       try {
+
+        if (!req.query.id) {
+          return res.status(400).send("Id parameter required for update.");
+        }
+        
         const updatedGame = await updateGame(
           req.query.id.toString(),
           req.body.moves

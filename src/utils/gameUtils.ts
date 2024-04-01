@@ -51,3 +51,11 @@ export function getWhosTurnItIs(moves: Sign[] | string[]): Sign | string {
 export function getRandomPepTalk() {
   return pepTalks[Math.floor(Math.random() * pepTalks.length)];
 }
+
+export function calculateDraw(squares: string[]) {
+  if (calculateWinner(squares)) {
+    return false; 
+  }
+
+  return squares.every(square => square !== '');
+}

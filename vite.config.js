@@ -10,6 +10,7 @@ export default defineConfig({
     environment: "jsdom",
     setupFiles: "./testSetup.js",
     include: [`**/__tests__/*.{ts,tsx}`],
+    // reporters: ['html'],
   },
   resolve: {
     alias: {
