@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "vitest --ui",
+    "test": "vitest",
     "test:e2e": "playwright test",
     "prisma:init": "prisma migrate dev --name init",
     "prisma:reset": "prisma migrate reset --force"
