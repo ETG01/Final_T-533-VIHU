@@ -33,17 +33,20 @@ jobs:
     - name: Run Playwright tests Chromium
       run: npx playwright test --project=chromium
       env:
-        HOME: /root
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DIRECT_URL: ${{ secrets.DIRECT_URL }}
       
     - name: Run Playwright tests Firefox
       run: npx playwright test --project=firefox
       env:
-        HOME: /root
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DIRECT_URL: ${{ secrets.DIRECT_URL }}
       
     - name: Run Playwright tests WebKit
       run: npx playwright test --project=webkit
       env:
-        HOME: /root
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        DIRECT_URL: ${{ secrets.DIRECT_URL }}
     
     - name: Test UI tests using react-testing-library
       run: npm test
