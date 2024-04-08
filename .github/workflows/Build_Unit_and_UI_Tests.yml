@@ -31,14 +31,14 @@ jobs:
     - name: Build
       run: npm run build
     
-    - name: Start Test Server
-      run: npm run start &
-      env:
-        DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
-        DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
+    # - name: Start Test Server
+    #   run: npm run start &
+    #   env:
+    #     DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
+    #     DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
     
-    - name: Wait for Test Server to be ready
-      run: sleep 10 # Adjust this value based on the actual time your server needs to be ready
+    # - name: Wait for Test Server to be ready
+    #   run: sleep 10 # Adjust this value based on the actual time your server needs to be ready
 
     - name: Run Playwright tests Chromium
       run: npx playwright test --project=chromium
@@ -51,14 +51,12 @@ jobs:
       env:
         DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
         DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
-        NODE_ENV: test
       
     - name: Run Playwright tests WebKit
       run: npx playwright test --project=webkit
       env:
         DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
         DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
-        NODE_ENV: test
     
     - name: Test UI tests using react-testing-library
       run: npm test

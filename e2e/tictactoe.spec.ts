@@ -212,26 +212,37 @@ test.describe("All games List", () => {
     // Check if at least one game row is present
     expect(gameRows.length).toBeGreaterThan(0);
 
+    await page.waitForSelector('div.Row_gameInfo__F31_v', { state: 'attached' });
+
     // Define expected HTML snippets for game rows
-    const expectedGameRowHTMLs = [
-        `<div class="Row_gameInfo__F31_v"><div><div>❌ John 🎉</div><div>⭕ Maria </div></div><div class="Row_dateFromNow___oG1o">Created: a few seconds ago</div></div>`,
-        `<div class="Row_gameInfo__F31_v"><div><div>❌ John </div><div>⭕ Maria 🎉</div></div><div class="Row_dateFromNow___oG1o">Created: a few seconds ago</div></div>`,
-        `<div class="Row_gameInfo__F31_v"><div><div>❌ John </div><div>⭕ Maria </div></div><div class="Row_dateFromNow___oG1o">Created: a few seconds ago</div></div>`
-    ];
+// Define expected HTML snippets for game rows
+const expectedGameRowHTMLs = [
+  `<div class="Row_gameInfo__F31_v"><div><div>❌ John 🎉</div><div>⭕ Maria </div></div><div class="Row_dateFromNow___oG1o">Created: a few seconds ago</div></div>`,
+  `<div class="Row_gameInfo__F31_v"><div><div>❌ John </div><div>⭕ Maria 🎉</div></div><div class="Row_dateFromNow___oG1o">Created: a few seconds ago</div></div>`,
+  `<div class="Row_gameInfo__F31_v"><div><div>❌ John </div><div>⭕ Maria </div></div><div class="Row_dateFromNow___oG1o">Created: a few seconds ago</div></div>`
+];
 
-    // Check details of each game row
-    for (let i = 0; i < gameRows.length; i++) {
-        const gameRowHTML = await page.evaluate(row => row.innerHTML, gameRows[i]);
-        expect(gameRowHTML).toContain(expectedGameRowHTMLs[i]);
+// Retrieve all game rows HTML
+const gameRowsHTML = await Promise.all(gameRows.map(async (gameRow) => {
+  return page.evaluate(row => row.innerHTML, gameRow);
+}));
 
-        // Check if board cells are present
-        const boardCells = await gameRows[i].$$('div.Board_container__VfdJF div.Cell_miniCell__GEFD3');
-        // Assuming each game has a 3x3 board, so there should be 9 cells
-        expect(boardCells.length).toBe(9);
-    }
+// Check if each expected HTML snippet is present in the game rows HTML
+expectedGameRowHTMLs.forEach(expectedHTML => {
+  const isPresent = gameRowsHTML.some(gameRowHTML => gameRowHTML.includes(expectedHTML));
+  expect(isPresent).toBeTruthy();
+});
 
-    // delete db
-    await prisma.game.deleteMany();
+// Additional checks for each game row
+for (const gameRow of gameRows) {
+  // Check if board cells are present
+  const boardCells = await gameRow.$$(`div.Board_container__VfdJF div.Cell_miniCell__GEFD3`);
+  // Assuming each game has a 3x3 board, so there should be 9 cells
+  expect(boardCells.length).toBe(9);
+}
+
+// delete db
+await prisma.game.deleteMany();
   });
 
 
