@@ -31,13 +31,17 @@ jobs:
     - name: Build
       run: npm run build
     
-    - name: Print environment variables
-      run: |
-        echo "NODE_ENV=${NODE_ENV}"
+    - name: Start Test Server
+      run: npm run start &
+      env:
+        DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
+        DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
+    
+    - name: Wait for Test Server to be ready
+      run: sleep 10 # Adjust this value based on the actual time your server needs to be ready
 
     - name: Run Playwright tests Chromium
       run: npx playwright test --project=chromium
-      
       env:
         DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
         DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
