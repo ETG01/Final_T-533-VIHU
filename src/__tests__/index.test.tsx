@@ -104,7 +104,7 @@ afterEach(() => {
 afterAll(() => server.close());
 
 describe("Home Component Tests", () => {
-  it("renders Home component", async () => {
+  it("renders title", async () => {
     const { getByText } = render(<Home />);
     expect(getByText("Tic Tac Toe #️⃣")).toBeInTheDocument();
   });

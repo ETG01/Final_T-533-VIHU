@@ -71,6 +71,8 @@ npx prisma generate
 
 `npm run dev`
 
+npx playwright install 
+
 And make sure to look into `package.json` for other commands, and feel free to add commands required for this assignment.
 
 ## Hand in
