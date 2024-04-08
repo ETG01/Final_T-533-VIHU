@@ -8,6 +8,4 @@ declare global {
 
 export const prisma = global.prisma || new PrismaClient();
 
-console.log("Mode = ${process.env.NODE_ENV}"); 
-
 if (process.env.NODE_ENV !== "production") global.prisma = prisma;

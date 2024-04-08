@@ -34,14 +34,13 @@ jobs:
     - name: Print environment variables
       run: |
         echo "NODE_ENV=${NODE_ENV}"
-        
+
     - name: Run Playwright tests Chromium
       run: npx playwright test --project=chromium
       
       env:
         DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
         DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
-        NODE_ENV: test
       
     - name: Run Playwright tests Firefox
       run: npx playwright test --project=firefox
