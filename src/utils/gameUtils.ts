@@ -20,6 +20,7 @@ export function calculateWinner(
       return squares[a];
     }
   }
+  //
   return null;
 }
 
