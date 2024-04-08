@@ -27,7 +27,7 @@ The Project is a NextJS application with a Postgres database to keep track of th
 - Make the code and relevant files pretty.
 - There are no unit tests. Add them. FINSIHED
 - There are no ui integration tests. Add them. FINISHED
-- There are no e2e tests. Add them.
+- There are no e2e tests. Add them. FINISHED
 
 #### **Deploy it!**
 
