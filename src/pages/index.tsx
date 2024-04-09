@@ -5,8 +5,27 @@ import { useRouter } from "next/router";
 import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import { EMOJI, Sign } from "../utils/constants";
+import { datadogRum } from "@datadog/browser-rum";
 
 const Home: NextPage = () => {
+  
+
+  datadogRum.init({
+    applicationId: "2e2eaec8-73c7-4577-845b-790b889ddc15",
+    clientToken: "pub60b5aeb5f653b30e1a4dd12eafdc2c84",
+    site: "datadoghq.eu",
+    service: "final-assignment",
+    env: "<ENV_NAME>",
+    // Specify a version number to identify the deployed version of your application in Datadog
+    // version: '1.0.0',
+    sessionSampleRate: 100,
+    sessionReplaySampleRate: 20,
+    trackUserInteractions: true,
+    trackResources: true,
+    trackLongTasks: true,
+    defaultPrivacyLevel: "mask-user-input",
+  });
+
   const [isCreating, setIsCreating] = useState(false);
   const [playerName, setPlayerName] = useState("");
   const [secondPlayerName, setSecondPlayerName] = useState("");

@@ -16,6 +16,7 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "@datadog/browser-rum": "^5.15.0",
     "@prisma/client": "^5.11.0",
     "axios": "^1.6.8",
     "date-fns": "^3.6.0",
