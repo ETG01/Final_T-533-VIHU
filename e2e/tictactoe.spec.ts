@@ -217,9 +217,9 @@ test.describe("All games List", () => {
     // Define expected HTML snippets for game rows
 // Define expected HTML snippets for game rows
 const expectedGameRowHTMLs = [
-  `<div class="Row_gameInfo__F31_v"><div><div>❌ John 🎉</div><div>⭕ Maria </div></div><div class="Row_dateFromNow___oG1o">Created: a few seconds ago</div></div>`,
-  `<div class="Row_gameInfo__F31_v"><div><div>❌ John </div><div>⭕ Maria 🎉</div></div><div class="Row_dateFromNow___oG1o">Created: a few seconds ago</div></div>`,
-  `<div class="Row_gameInfo__F31_v"><div><div>❌ John </div><div>⭕ Maria </div></div><div class="Row_dateFromNow___oG1o">Created: a few seconds ago</div></div>`
+  `<div class="Row_gameInfo__F31_v"><div><div>❌ John 🎉</div><div>⭕ Maria </div></div><div class="Row_dateFromNow___oG1o">Created: less than a minute</div></div>`,
+  `<div class="Row_gameInfo__F31_v"><div><div>❌ John </div><div>⭕ Maria 🎉</div></div><div class="Row_dateFromNow___oG1o">Created: less than a minute</div></div>`,
+  `<div class="Row_gameInfo__F31_v"><div><div>❌ John </div><div>⭕ Maria </div></div><div class="Row_dateFromNow___oG1o">Created: less than a minute</div></div>`
 ];
 
 // Retrieve all game rows HTML

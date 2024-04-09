@@ -13,6 +13,7 @@ import "@testing-library/jest-dom";
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 
 import Home from "../pages/index";
+const moment = require('moment');
 
 import { http } from "msw";
 import { setupServer } from "msw/node";

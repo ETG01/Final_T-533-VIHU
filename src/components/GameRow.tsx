@@ -1,10 +1,10 @@
-import moment from "moment";
 import Link from "next/link";
 import { Game } from "../lib/gameStore";
 import styles from "../styles/Row.module.css";
 import { Sign } from "../utils/constants";
 import { calculateWinner, getPlayerNameFromSign } from "../utils/gameUtils";
 import Board from "./Board";
+import { formatDistanceToNow } from "date-fns";
 
 interface Props {
   game: Game;
@@ -27,7 +27,7 @@ export function GameRow({ game }: Props) {
             </div>
           </div>
           <div className={styles.dateFromNow}>
-            Created: {moment(game.createdAt).fromNow()}
+            Created: {game.createdAt ? formatDistanceToNow(game.createdAt) : ""}
           </div>
         </div>
         <div>
