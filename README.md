@@ -8,6 +8,8 @@
 ### Datadog Dashboard Image
 ![DataDog Dashboard Image](image.png)
 
+### Eslint Repo
+- [ 🧹 Eslint No Momnet repo link](https://github.com/ETG01/2_FINAL_ESLINT)
 
 #### The full circle
 
@@ -30,7 +32,7 @@ The Project is a NextJS application with a Postgres database to keep track of th
 #### **Fix it!**
 
 - 1. Currently the game can only tell when someone wins, but not when there is a draw. Write a test for such function and then implement it and add that to the game. `FINSIHED`
-- 2. Should the game be playable without the players names ? awnser == `Yes` Beaus some users might not want to enter their names. so that makes the game playable without the names beaus they can always see if they ar X or O and the game can still be played.`FINSIHED`
+- 2. Should the game be playable without the players names ? awnser == `Yes`, the game should be playable without the players names to accommodate users who might prefer not to enter their names, ensuring the game remains accessible and user-friendly. Additionally, allowing gameplay without requiring names respects personal privacy, catering to those who wish to keep their identity private. This approach makes the game accessible since players can identify themselves as ❌ or ⭕, and the game can still proceed smoothly without requiring names. It not only enhances the flexibility of the game but also promotes a privacy-conscious environment, ensuring all players can enjoy the game comfortably, regardless of their privacy preferences.`FINSIHED`
 - 3. Create a new GitHub repository with one eslint rule that forbids moment. Release that package, using GitHub Actions, and use that in this project. `FINSIHED`
 - 4. There should be lint errors/warnings after applying that rule, fix it. `FINSIHED`
 - 5. Make the code and relevant files pretty. `FINSIHED`
@@ -86,6 +88,8 @@ And make sure to look into `package.json` for other commands, and feel free to a
 ## Hand in
 
 Add me (arnif) as collaborator to both repositories. Add a screenshot of your Datadog dashboard to the README.md and also add link to your Eslint rule GitHub repository to the README.md of this project.
+
+
 Also make sure to send the GitHub link to this repository in Canvas when handing in the assignment.
 
 Good luck and Have fun :)
