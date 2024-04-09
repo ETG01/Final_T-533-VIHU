@@ -91,7 +91,7 @@ jobs:
         run: npm run test:ui
 
   e2e-tests:
-    name: 🌐 Run E2E Playwright Tests
+    name: 🌐 Run E2E Playwright Tests using DB(Dev)
     runs-on: ubuntu-latest
     needs: setup-and-build
     container:
@@ -133,7 +133,7 @@ jobs:
           DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
 
   deploy-to-vercel:
-    name: 🚀 Deploy to Vercel
+    name: 🚀 Deploy to Vercel Preview using DB(Dev)
     runs-on: ubuntu-latest
     needs: [setup-and-build, lint-code, unit-tests, ui-tests, e2e-tests]
 
