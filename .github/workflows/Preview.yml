@@ -28,15 +28,15 @@ jobs:
       - name: 📦 Install Dependencies
         run: npm ci
 
-    #   - name: 🗂️ Cache Next.js Build Output
-    #     uses: actions/cache@v4
-    #     with:
-    #       path: |
-    #         ~/.npm
-    #         ${{ github.workspace }}/.next/cache
-    #       key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-    #       restore-keys: |
-    #         ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+      - name: 🗂️ Cache Next.js Build Output
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
       - name: 🏗️ Execute Build
         run: npm run build
@@ -124,15 +124,15 @@ jobs:
       - name: 📦 Install Dependencies
         run: npm ci
 
-    #   - name: 🗂️ Cache Next.js Build Output
-    #     uses: actions/cache@v4
-    #     with:
-    #       path: |
-    #         ~/.npm
-    #         ${{ github.workspace }}/.next/cache
-    #       key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
-    #       restore-keys: |
-    #         ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+      - name: 🗂️ Cache Next.js Build Output
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
       - name: 🏗️ Execute Build
         run: npm run build
