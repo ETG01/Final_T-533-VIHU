@@ -28,21 +28,13 @@ jobs:
       - name: 📦 Install Dependencies
         run: npm ci
       
-      - name: 💾 Cache Dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: 🏗️ Execute Build
         run: npm run build
 
       - name: 📤 Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: build-app
+          name: build-artifact
           path: ./
   
   lint-code:
@@ -58,11 +50,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-
-      - name: 💿 Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build-app
+          cache: 'npm'
+      
+      - name: 📦 Reuse Dependencies
+        run: npm ci
 
       - name: 🔍 Run ESLint
         run: npm run lint
@@ -80,11 +71,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'
 
-      - name: 💿 Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build-app
+      - name: 📦 Reuse Dependencies
+        run: npm ci
 
       - name: 🧪 Execute Unit Tests
         run: npm run test:unit
@@ -102,11 +92,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'
 
-      - name: 💿 Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build-app
+      - name: 📦 Reuse Dependencies
+        run: npm ci
 
       - name: 🖼️ Execute UI Tests
         run: npm run test:ui
@@ -126,11 +115,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'
 
-      - name: 💿 Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build-app
+      - name: 📦 Reuse Dependencies
+        run: npm ci
 
       - name: 🌐 Execute Playwright Tests on Chromium
         run: npx playwright test --project=chromium
@@ -163,6 +151,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+          cache: 'npm'
 
       - name: 💿 Download Build Artifact
         uses: actions/download-artifact@v4
