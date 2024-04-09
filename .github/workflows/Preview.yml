@@ -1,4 +1,4 @@
-name: Tests and Vercel Preview Deployment
+name: 🚀 CI/CD Pipeline for Tests and Vercel Deployment
 
 on:
   push:
@@ -11,111 +11,172 @@ on:
       - "!main"
 
 jobs:
-  build:
+  setup-and-build:
+    name: 🏗️ Setup and Build
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
+      - name: 🛒 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Install dependencies
+          cache: 'npm'
+
+      - name: 📦 Install Dependencies
         run: npm ci
-      - name: Build
+      
+      - name: 💾 Cache Dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: 🏗️ Execute Build
         run: npm run build
 
-  lint:
+      - name: 📤 Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-app
+          path: ./
+  
+  lint-code:
+    name: 🧹 Lint Code
     runs-on: ubuntu-latest
-    needs: build
-
-    container:
-      image: mcr.microsoft.com/playwright:v1.42.1-jammy
+    needs: setup-and-build
 
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
+      - name: 🛒 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Install dependencies
-        run: npm ci
-      - name: Eslint check
+
+      - name: 💿 Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-app
+
+      - name: 🔍 Run ESLint
         run: npm run lint
 
-  unit-test:
+  unit-tests:
+    name: 🧪 Run Unit Tests
     runs-on: ubuntu-latest
-    needs: lint
+    needs: lint-code
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
+      - name: 🛒 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Install dependencies
-        run: npm ci
-      - name: Unit Test
+
+      - name: 💿 Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-app
+
+      - name: 🧪 Execute Unit Tests
         run: npm run test:unit
 
-  ui-test:
+  ui-tests:
+    name: 🖼️ Run UI Tests
     runs-on: ubuntu-latest
-    needs: unit-test
+    needs: unit-tests
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
+      - name: 🛒 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Install dependencies
-        run: npm ci
-      - name: UI Test
+
+      - name: 💿 Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-app
+
+      - name: 🖼️ Execute UI Tests
         run: npm run test:ui
 
-  playwright-tests:
+  e2e-tests:
+    name: 🌐 Run E2E Playwright Tests
     runs-on: ubuntu-latest
-    needs: ui-test
+    needs: ui-tests
     container:
       image: mcr.microsoft.com/playwright:v1.42.1-jammy
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
+      - name: 🛒 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Install dependencies
-        run: npm ci
-      - name: Run Playwright tests Chromium
+
+      - name: 💿 Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-app
+
+      - name: 🌐 Execute Playwright Tests on Chromium
         run: npx playwright test --project=chromium
         env:
           DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
           DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
-      - name: Run Playwright tests Firefox
+
+      - name: 🌐 Execute Playwright Tests on Firefox
         run: npx playwright test --project=firefox
         env:
           DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
           DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
-      - name: Run Playwright tests WebKit
+
+      - name: 🌐 Execute Playwright Tests on WebKit
         run: npx playwright test --project=webkit
         env:
           DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
           DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
 
-  deploy:
+  deploy-to-vercel:
+    name: 🚀 Deploy to Vercel
     runs-on: ubuntu-latest
-    needs: playwright-tests
+    needs: e2e-tests
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Setup Node.js
+      - name: 🛒 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Install dependencies
-        run: npm ci
-      - name: Install Vercel CLI
+
+      - name: 💿 Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-app
+
+      - name: 🌍 Install Vercel CLI
         run: npm install --global vercel@latest
-      - name: Pull Vercel environment information
+
+      - name: ⚙️ Pull Vercel Environment Info
         run: vercel pull --yes --environment=preview --token=${{ secrets.V_TOKEN }}
-      - name: Construct project
+
+      - name: 🏗️ Construct Project for Deployment
         run: vercel build --token=${{ secrets.V_TOKEN }}
-      - name: Deploy project to Vercel
+
+      - name: 🚀 Deploy Project to Vercel
         run: vercel deploy --prebuilt --token=${{ secrets.V_TOKEN }}
