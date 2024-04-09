@@ -1,5 +1,14 @@
 # Assignment Final
 
+### Vercel Production & Preview URLs:
+- [ 🌍 Production using DB(PROD)](https://final-t-533-vihu.vercel.app/)
+- [🌐 Preview using DB(DEV)](https://final-t-533-vihu-4u9wkfca7-einar-tomas-projects.vercel.app/)
+
+
+### Datadog Dashboard Image
+![DataDog Dashboard Image](image.png)
+
+
 #### The full circle
 
 ---
@@ -20,31 +29,31 @@ The Project is a NextJS application with a Postgres database to keep track of th
 
 #### **Fix it!**
 
-- 1. Currently the game can only tell when someone wins, but not when there is a draw. Write a test for such function and then implement it and add that to the game. FINSIHED
-- 2. Should the game be playable without the players names ? awnser == Yes Beaus some users might not want to enter their names. so that makes the game playable without the names beaus they can always see if they ar X or O and the game can still be played.FINSIHED
-- 3. Create a new GitHub repository with one eslint rule that forbids moment. Release that package, using GitHub Actions, and use that in this project. FINSIHED
-- 4. There should be lint errors/warnings after applying that rule, fix it. FINSIHED
-- 5. Make the code and relevant files pretty. FINSIHED
-- 6. There are no unit tests. Add them. FINSIHED
-- 7. There are no ui integration tests. Add them. FINISHED
-- 8. There are no e2e tests. Add them. FINISHED
+- 1. Currently the game can only tell when someone wins, but not when there is a draw. Write a test for such function and then implement it and add that to the game. `FINSIHED`
+- 2. Should the game be playable without the players names ? awnser == `Yes` Beaus some users might not want to enter their names. so that makes the game playable without the names beaus they can always see if they ar X or O and the game can still be played.`FINSIHED`
+- 3. Create a new GitHub repository with one eslint rule that forbids moment. Release that package, using GitHub Actions, and use that in this project. `FINSIHED`
+- 4. There should be lint errors/warnings after applying that rule, fix it. `FINSIHED`
+- 5. Make the code and relevant files pretty. `FINSIHED`
+- 6. There are no unit tests. Add them. `FINSIHED`
+- 7. There are no ui integration tests. Add them. `FINISHED`
+- 8. There are no e2e tests. Add them. `FINISHED`
 
 #### **Deploy it!**
 
-- Create a GitHub action that does all the checks we've been doing in previous assignments and then deploys the application using Vercel. Please note the checks should be done on any branch but the production deployment should only happen on the `main` branch. All other branches should use the preview deployment. FINSIHED
-- Add a link to the application running to this README.md file Working on
+- 1. Create a GitHub action that does all the checks we've been doing in previous assignments and then deploys the application using Vercel. Please note the checks should be done on any branch but the production deployment should only happen on the `main` branch. All other branches should use the preview deployment. `FINSIHED`
+- 2. Add a link to the application running to this README.md file Working on `FINSIHED`
 
 #### **Monitor it!**
 
-- Add Datadog RUM (Real user monitoring) to the application. Working on
-- Create a dashboard to monitor the health of the application. Working on
-- Add a screenshot of the dashboard to this README.md file Working on
+- 1. Add Datadog RUM (Real user monitoring) to the application. `FINSIHED`
+- 2. Create a dashboard to monitor the health of the application. `FINSIHED`
+- 3. Add a screenshot of the dashboard to this README.md file `FINSIHED`
 
 ---
 
 ### Prerequisite
 
-Copy the GitHub repo into your own repository and make it private.
+Copy the GitHub repo into your own repository and make it private. `FINSIHED`
 
 Node v20 is required for this project to run.
 
@@ -57,7 +66,7 @@ Here is one free services you can utilize, but feel free to choose any Postgres 
 
 - [Supabase](https://app.supabase.com/)
 
-Get your connection string and add that to your ENV as ´DATABASE_URL´
+Get your connection string and add that to your ENV as ´DATABASE_URL´ `FINSIHED`
 
 ### Helpful Commands
 
