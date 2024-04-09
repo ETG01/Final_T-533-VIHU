@@ -2,11 +2,9 @@ name: 🚀 CI/CD Pipeline for Preview Deployment
 
 on:
     push:
-      branches-ignore:
-        - main
+      branches-ignore: ["main"]
     pull_request:
-        branches-ignore:
-            - main
+        branches-ignore: ["main"]
 
 jobs:
   setup-and-build:
