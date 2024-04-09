@@ -170,7 +170,7 @@ test.describe("Gameplay", () => {
 });
 
 test.describe("All games List", () => {
-  test("Check Game List", async ({ page }) => {
+  test("From / to Check Game List", async ({ page }) => {
     // Navigate to the home page
     await page.goto("/");
     // Check if the page's h1 text matches 'Tic Tac Toe #️⃣'

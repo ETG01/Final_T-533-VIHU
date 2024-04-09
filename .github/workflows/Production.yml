@@ -135,20 +135,20 @@ jobs:
         run: npm run build
 
       - name: 🌐 Execute Playwright Tests on Chromium
-        run: npx playwright test --project=chromium
+        run: npx playwright test --project=chromium --reporter=list
         env:
           DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
           DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
 
       - name: 🌐 Execute Playwright Tests on Firefox
-        run: npx playwright test --project=firefox
+        run: npx playwright test --project=firefox --reporter=list
         env:
           HOME: /root
           DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
           DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
 
       - name: 🌐 Execute Playwright Tests on WebKit
-        run: npx playwright test --project=webkit
+        run: npx playwright test --project=webkit --reporter=list
         env:
           DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
           DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
