@@ -1,4 +1,4 @@
-name: 🚀 CI/CD Pipeline for Production Deployment
+name: 🌍 Production 🚀 CI/CD Pipeline
 
 on:
     push:

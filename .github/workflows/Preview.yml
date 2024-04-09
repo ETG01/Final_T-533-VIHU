@@ -1,4 +1,4 @@
-name: 🚀 CI/CD Pipeline for Preview Deployment
+name: 🌐 Preview 🚀 CI/CD Pipeline
 
 on:
     push:
