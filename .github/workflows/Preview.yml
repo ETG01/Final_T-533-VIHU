@@ -27,9 +27,24 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: npm ci
-      
+
+      - name: 🗂️ Cache Next.js Build Output
+        uses: actions/cache@v4
+        id: nextjs-cache
+        with:
+          path: .next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nextjs-
+
       - name: 🏗️ Execute Build
         run: npm run build
+
+      - name: 📤 Upload Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifact
+          path: ./
   
   lint-code:
     name: 🧹 Lint Code
