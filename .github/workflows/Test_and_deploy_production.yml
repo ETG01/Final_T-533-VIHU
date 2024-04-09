@@ -31,6 +31,15 @@ jobs:
     - name: Build
       run: npm run build
     
+    - name: Eslint check
+      run: npm run lint
+
+    - name: Unit Test
+      run: npm run test:unit
+    
+    - name: Ui Test
+      run: npm run test:ui
+    
     - name: Run Playwright tests Chromium
       run: npx playwright test --project=chromium
       env:
@@ -49,11 +58,6 @@ jobs:
       env:
         DATABASE_URL: ${{ secrets.DEV_DATABASE_URL }}
         DIRECT_URL: ${{ secrets.DEV_DIRECT_URL }}
-    
-    - name: Test UI tests using react-testing-library
-      run: npm test
-      env:
-        CI: true
     
     - name: Install Vercel CLI
       run: npm install --global vercel@latest

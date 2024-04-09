@@ -8,6 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "test": "vitest",
+    "test:unit": "vitest run gameUtils.test.ts",
+    "test:ui": "vitest run index.test.tsx",
     "test:e2e": "playwright test",
     "prisma:init": "prisma migrate dev --name init",
     "prisma:reset": "prisma migrate reset --force"
