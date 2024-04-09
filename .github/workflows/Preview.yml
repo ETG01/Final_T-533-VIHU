@@ -73,10 +73,8 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      - name: 💿 Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build-artifact
+      - name: 📦 Install Dependencies
+        run: npm ci
 
       - name: 🧪 Execute Unit Tests
         run: npm run test:unit
@@ -95,9 +93,6 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-
-      - name: 📦 Install Dependencies
-        run: npm ci
 
       - name: 🖼️ Execute UI Tests
         run: npm run test:ui
@@ -122,10 +117,8 @@ jobs:
       - name: 📦 Install Dependencies
         run: npm ci
 
-      - name: 💿 Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build-artifact
+      - name: 🏗️ Execute Build
+        run: npm run build
 
       - name: 🌐 Execute Playwright Tests on Chromium
         run: npx playwright test --project=chromium
@@ -160,11 +153,6 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-
-      - name: 💿 Download Build Artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: build-artifact
 
       - name: 🌍 Install Vercel CLI
         run: npm install --global vercel@latest
