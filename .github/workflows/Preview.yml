@@ -30,12 +30,13 @@ jobs:
 
       - name: 🗂️ Cache Next.js Build Output
         uses: actions/cache@v4
-        id: nextjs-cache
         with:
-          path: .next/cache
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}
+          path: |
+            ~/.npm
+            ${{ github.workspace }}/.next/cache
+          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-${{ hashFiles('**/*.js', '**/*.jsx', '**/*.ts', '**/*.tsx') }}
           restore-keys: |
-            ${{ runner.os }}-nextjs-
+            ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
 
       - name: 🏗️ Execute Build
         run: npm run build
@@ -43,9 +44,9 @@ jobs:
       - name: 📤 Upload Build Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: build-artifact
-          path: ./
-  
+            name: build-artifact
+            path: ./
+
   lint-code:
     name: 🧹 Lint Code
     runs-on: ubuntu-latest
