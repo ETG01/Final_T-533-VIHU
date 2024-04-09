@@ -27,14 +27,6 @@ jobs:
 
       - name: 📦 Install Dependencies
         run: npm ci
-
-      - name: 💾 Cache Dependencies
-        uses: actions/cache@v4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
       
       - name: 🏗️ Execute Build
         run: npm run build
@@ -81,8 +73,10 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      - name: 📦 Install Dependencies
-        run: npm ci
+      - name: 💿 Download Build Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-artifact
 
       - name: 🧪 Execute Unit Tests
         run: npm run test:unit
