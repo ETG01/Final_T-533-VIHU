@@ -2,7 +2,7 @@ import { Game } from "../lib/gameStore";
 import { EMOJI, pepTalks, Sign } from "./constants";
 
 export function calculateWinner(
-  squares: Sign[] | string[]
+  squares: Sign[] | string[],
 ): Sign | null | string {
   const lines = [
     [0, 1, 2],
@@ -26,7 +26,7 @@ export function calculateWinner(
 
 export function getPlayerNameFromSign(
   sign: Sign | string,
-  game: Game
+  game: Game,
 ): Sign | string {
   if (sign === Sign.O) {
     return `${EMOJI[sign]} ${game?.player2_name} `;
@@ -55,8 +55,8 @@ export function getRandomPepTalk() {
 
 export function calculateDraw(squares: string[]) {
   if (calculateWinner(squares)) {
-    return false; 
+    return false;
   }
 
-  return squares.every(square => square !== '');
+  return squares.every((square) => square !== "");
 }

@@ -13,7 +13,7 @@ const EMPTY_MOVES = Array(9).fill("");
 
 export async function createGame(
   playerName: string,
-  secondPlayerName: string
+  secondPlayerName: string,
 ): Promise<Game> {
   await prisma.$connect();
 
@@ -34,7 +34,7 @@ export async function getGameById(gameId: string): Promise<Game | null> {
 
 export async function updateGame(
   gameId: string,
-  moves: string[]
+  moves: string[],
 ): Promise<Game> {
   await prisma.$connect();
   return await prisma.game.update({

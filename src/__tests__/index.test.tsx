@@ -13,7 +13,7 @@ import "@testing-library/jest-dom";
 import { fireEvent, render, waitFor, screen } from "@testing-library/react";
 
 import Home from "../pages/index";
-const moment = require('moment');
+const moment = require("moment");
 
 import { http } from "msw";
 import { setupServer } from "msw/node";
@@ -83,7 +83,7 @@ const server = setupServer(
         "Content-Type": "application/json",
       },
     });
-  })
+  }),
 );
 
 const mockPush = vi.fn();
@@ -187,7 +187,7 @@ describe("Game List Page Tests", () => {
             "Content-Type": "application/json",
           },
         });
-      })
+      }),
     );
 
     render(<GameList />);
@@ -202,9 +202,7 @@ describe("Game List Page Tests", () => {
         id: "123",
         player1_name: "John",
         player2_name: "Jane",
-        moves: ["X", "O", "O",
-        "O", "X", "X", 
-        "X", "O", "O"],
+        moves: ["X", "O", "O", "O", "X", "X", "X", "O", "O"],
         createdAt: new Date(),
       },
     ];
@@ -216,7 +214,7 @@ describe("Game List Page Tests", () => {
             "Content-Type": "application/json",
           },
         });
-      })
+      }),
     );
 
     render(<GameList />);
@@ -274,7 +272,7 @@ describe("GamePage Page Tests", () => {
             "Content-Type": "application/json",
           },
         });
-      })
+      }),
     );
 
     render(<GamePage />);
@@ -282,8 +280,5 @@ describe("GamePage Page Tests", () => {
     await waitFor(() => {
       expect(screen.getByText(/It's a draw!/i)).toBeInTheDocument();
     });
-
   });
-
-
 });

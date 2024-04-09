@@ -65,21 +65,21 @@ export default function Board({ onMove, moves, readOnly }: Props): JSX.Element {
             value={moves[3]}
             number={3}
             onClick={() => handleClick(3)}
-            data-testid={`cell-${3}`} 
+            data-testid={`cell-${3}`}
           />
           <Cell
             readOnly={readOnly}
             value={moves[4]}
             number={4}
             onClick={() => handleClick(4)}
-            data-testid={`cell-${4}`} 
+            data-testid={`cell-${4}`}
           />
           <Cell
             readOnly={readOnly}
             value={moves[5]}
             number={5}
             onClick={() => handleClick(5)}
-            data-testid={`cell-${5}`} 
+            data-testid={`cell-${5}`}
           />
         </div>
         <div>
@@ -88,21 +88,21 @@ export default function Board({ onMove, moves, readOnly }: Props): JSX.Element {
             value={moves[6]}
             number={6}
             onClick={() => handleClick(6)}
-            data-testid={`cell-${6}`} 
+            data-testid={`cell-${6}`}
           />
           <Cell
             readOnly={readOnly}
             value={moves[7]}
             number={7}
             onClick={() => handleClick(7)}
-            data-testid={`cell-${7}`} 
+            data-testid={`cell-${7}`}
           />
           <Cell
             readOnly={readOnly}
             value={moves[8]}
             number={8}
             onClick={() => handleClick(8)}
-            data-testid={`cell-${8}`} 
+            data-testid={`cell-${8}`}
           />
         </div>
       </div>

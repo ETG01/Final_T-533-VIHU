@@ -18,7 +18,11 @@ export default function Cell({
   "data-testid": testId,
 }: Props) {
   return (
-    <div data-testid={testId} className={readOnly ? styles.miniCell : styles.cell} onClick={onClick}>
+    <div
+      data-testid={testId}
+      className={readOnly ? styles.miniCell : styles.cell}
+      onClick={onClick}
+    >
       {value === Sign.X && EMOJI[Sign.X]}
       {value === Sign.O && EMOJI[Sign.O]}
     </div>

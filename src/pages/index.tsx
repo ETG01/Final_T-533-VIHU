@@ -6,15 +6,12 @@ import { useState } from "react";
 import styles from "../styles/Home.module.css";
 import { EMOJI, Sign } from "../utils/constants";
 
-
 const Home: NextPage = () => {
   const [isCreating, setIsCreating] = useState(false);
   const [playerName, setPlayerName] = useState("");
   const [secondPlayerName, setSecondPlayerName] = useState("");
 
   const router = useRouter();
-
-  
 
   async function createGame() {
     try {

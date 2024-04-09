@@ -3,7 +3,7 @@ import { createGame } from "../../lib/gameStore";
 
 export default async function newGame(
   req: NextApiRequest,
-  res: NextApiResponse
+  res: NextApiResponse,
 ) {
   const { playerName, secondPlayerName } = req.body;
   try {

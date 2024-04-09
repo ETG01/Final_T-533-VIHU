@@ -1,10 +1,14 @@
 import { describe, expect, it } from "vitest";
-import { calculateDraw, calculateWinner, getPlayerNameFromSign, getRandomPepTalk, getWhosTurnItIs } from "../gameUtils";
+import {
+  calculateDraw,
+  calculateWinner,
+  getPlayerNameFromSign,
+  getRandomPepTalk,
+  getWhosTurnItIs,
+} from "../gameUtils";
 import { pepTalks } from "../constants";
 
-
 describe("Tests", () => {
-
   describe("calculateWinner", () => {
     it("returns X for a row match", () => {
       const squares: string[] = ["X", "X", "X", "", "", "", "", "", ""];
@@ -75,16 +79,12 @@ describe("Tests", () => {
 
   describe("calculateDraw", () => {
     it("returns false if there is a winner", () => {
-      const squares: string[] = ["X", "X", "X",
-                                  "", "", "",
-                                  "", "", ""];
+      const squares: string[] = ["X", "X", "X", "", "", "", "", "", ""];
       expect(calculateDraw(squares)).toBe(false);
     });
 
     it("returns true if board is full with no winner", () => {
-      const squares: string[] =   ["X", "O", "X",
-                                   "X", "O", "O",
-                                   "O", "X", "X"];
+      const squares: string[] = ["X", "O", "X", "X", "O", "O", "O", "X", "X"];
       expect(calculateDraw(squares)).toBe(true);
     });
 

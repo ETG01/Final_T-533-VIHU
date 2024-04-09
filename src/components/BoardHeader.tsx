@@ -4,7 +4,7 @@ import {
   getPlayerNameFromSign,
   getRandomPepTalk,
   getWhosTurnItIs,
-  calculateDraw
+  calculateDraw,
 } from "../utils/gameUtils";
 import styles from "../styles/Home.module.css";
 import { WinnerAnnouncement } from "./WinnerAnnouncement";
