@@ -5,11 +5,3 @@
     "einartg21-no-moment/no-moment": "error"
   }
 }
-
-// {
-//   "extends": "next/core-web-vitals",
-//   "plugins": ["eslint-plugin-finalass_eslint"],
-//   "rules": {
-//     "finalass_eslint/enforce-no-moment": "error"
-//   }
-// }
