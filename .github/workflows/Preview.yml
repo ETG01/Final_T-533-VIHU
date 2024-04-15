@@ -48,7 +48,6 @@ jobs:
       - name: 🏗️ Execute Build
         run: npm run build
 
-
   lint-code:
     name: 🧹 Lint Code
     runs-on: ubuntu-latest
