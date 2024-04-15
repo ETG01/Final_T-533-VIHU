@@ -8,8 +8,6 @@ import { EMOJI, Sign } from "../utils/constants";
 import { datadogRum } from "@datadog/browser-rum";
 
 const Home: NextPage = () => {
-  
-
   datadogRum.init({
     applicationId: "2e2eaec8-73c7-4577-845b-790b889ddc15",
     clientToken: "pub60b5aeb5f653b30e1a4dd12eafdc2c84",

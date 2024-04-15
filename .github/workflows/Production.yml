@@ -7,9 +7,30 @@ on:
     branches: ["main"]
 
 jobs:
+  prettier-code:
+    name: 🎨 Prettify Code Check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🛒 Checkout Code
+        uses: actions/checkout@v4
+
+      - name: 🚀 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: "npm"
+
+      - name: 📦 Install Dependencies
+        run: npm ci
+
+      - name: 🎨 Run Prettier
+        run: npm run prettier:check
+
   setup-and-build:
     name: 🏗️ Setup and Build
     runs-on: ubuntu-latest
+    needs: prettier-code
 
     steps:
       - name: 🛒 Checkout Code
@@ -26,27 +47,6 @@ jobs:
 
       - name: 🏗️ Execute Build
         run: npm run build
-
-  prettier-code:
-    name: 🎨 Prettify Code
-    runs-on: ubuntu-latest
-    needs: setup-and-build
-
-    steps:
-      - name: 🛒 Checkout Code
-        uses: actions/checkout@v4
-
-      - name: 🚀 Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          cache: "npm"
-
-      - name: 📦 Install Dependencies
-        run: npm ci
-
-      - name: 🎨 Run Prettier
-        run: npm run prettier
 
   lint-code:
     name: 🧹 Lint Code

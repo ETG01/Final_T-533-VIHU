@@ -13,7 +13,8 @@
     "test:e2e": "playwright test",
     "prisma:init": "prisma migrate dev --name init",
     "prisma:reset": "prisma migrate reset --force",
-    "prettier": "prettier --write ."
+    "prettier:format": "prettier --write .",
+    "prettier:check": "prettier --check ."
   },
   "dependencies": {
     "@datadog/browser-rum": "^5.15.0",

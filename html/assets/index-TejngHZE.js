@@ -32476,32 +32476,30 @@ function Vdt({ center: t, config: e, graph: r, selection: o }) {
 }
 function Kdt({ config: t, center: e, graph: r, selection: o }) {
   o == null ||
-    o
-      .select(".link__label")
-      .attr("transform", (s) =>
-        s.source.x === void 0 ||
-        s.source.y === void 0 ||
-        s.target.x === void 0 ||
-        s.target.y === void 0
-          ? "translate(0, 0)"
-          : s.source.id === s.target.id
-            ? ss.reflexive.labelTransform({
+    o.select(".link__label").attr("transform", (s) =>
+      s.source.x === void 0 ||
+      s.source.y === void 0 ||
+      s.target.x === void 0 ||
+      s.target.y === void 0
+        ? "translate(0, 0)"
+        : s.source.id === s.target.id
+          ? ss.reflexive.labelTransform({
+              config: t,
+              node: s.source,
+              center: e,
+            })
+          : fw(r, s.source, s.target)
+            ? ss.arc.labelTransform({
                 config: t,
-                node: s.source,
-                center: e,
+                source: s.source,
+                target: s.target,
               })
-            : fw(r, s.source, s.target)
-              ? ss.arc.labelTransform({
-                  config: t,
-                  source: s.source,
-                  target: s.target,
-                })
-              : ss.line.labelTransform({
-                  config: t,
-                  source: s.source,
-                  target: s.target,
-                }),
-      );
+            : ss.line.labelTransform({
+                config: t,
+                source: s.source,
+                target: s.target,
+              }),
+    );
 }
 function fw(t, e, r) {
   return (
